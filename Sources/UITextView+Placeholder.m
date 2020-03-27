@@ -200,10 +200,13 @@
         textContainerInset = UIEdgeInsetsMake(8, 0, 8, 0);
     }
 
+    // @AlphaApps fix placeholder centering bug once and for all
     CGFloat x = lineFragmentPadding + textContainerInset.left;
-    CGFloat y = textContainerInset.top;
     CGFloat width = CGRectGetWidth(self.bounds) - x - lineFragmentPadding - textContainerInset.right;
     CGFloat height = [self.placeholderLabel sizeThatFits:CGSizeMake(width, 0)].height;
+    //CGFloat y = textContainerInset.top;
+    CGFloat y = (self.bounds.size.height / 2) - (height / 2);
+    // !AlphaApps
     self.placeholderLabel.frame = CGRectMake(x, y, width, height);
 }
 
